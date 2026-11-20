@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SONODA | Portfolio</title>
+    <title>SONODA | PORTFOLIO</title>
 
     <style>
-        /* ページ全体の基本設定 */
+        /* =========================
+           基本設定
+        ========================= */
         * {
             margin: 0;
             padding: 0;
@@ -18,31 +20,46 @@
         }
 
         body {
-            font-family: "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
-            background-color: #080d18;
-            color: #f0f4ff;
+            background-color: #f5f6f8;
+            color: #252b36;
+            font-family: "Arial", "Noto Sans JP", sans-serif;
             line-height: 1.8;
         }
 
-        /* ヘッダーとナビゲーション */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        /* =========================
+           ヘッダー
+        ========================= */
         header {
-            width: 100%;
-            padding: 20px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header-inner {
+            min-height: 75px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #0b1222;
-            border-bottom: 1px solid #1d3557;
-            position: sticky;
-            top: 0;
-            z-index: 10;
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 1.5rem;
             font-weight: bold;
             letter-spacing: 3px;
-            color: #4da6ff;
+            color: #3979c9;
         }
 
         nav {
@@ -51,442 +68,625 @@
         }
 
         nav a {
-            color: #d1d9e8;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
+            font-size: 0.85rem;
+            color: #555f70;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: #4da6ff;
+            color: #3979c9;
         }
 
-        /* メインビジュアル */
+        /* =========================
+           メインビジュアル
+        ========================= */
         .hero {
-            min-height: 580px;
+            min-height: 540px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 80px 20px;
-            background:
-                radial-gradient(ellipse at center, #142c50 0%, #0b1528 45%, #080d18 80%);
-            border-bottom: 1px solid #1d3557;
+            background: linear-gradient(135deg, #eaf3ff, #f5f6f8);
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-subtitle {
-            color: #4da6ff;
-            letter-spacing: 5px;
-            font-size: 14px;
+        /* 背景の円形装飾 */
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(57, 121, 201, 0.08);
+            right: 5%;
+            top: 80px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(57, 121, 201, 0.08);
+            right: 25%;
+            bottom: -70px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 90px 0;
+        }
+
+        .hero-label {
+            color: #3979c9;
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 4px;
             margin-bottom: 20px;
         }
 
         .hero h1 {
-            font-size: clamp(48px, 10vw, 90px);
-            letter-spacing: 8px;
-            font-weight: 800;
-            text-shadow: 0 0 30px rgba(77, 166, 255, 0.3);
+            font-size: clamp(3rem, 9vw, 5.5rem);
+            line-height: 1.2;
+            letter-spacing: 4px;
+            color: #252b36;
+            margin-bottom: 20px;
         }
 
-        .hero h2 {
-            font-size: 20px;
-            font-weight: normal;
-            color: #a9c8ee;
-            margin-top: 15px;
+        .hero h1 span {
+            color: #3979c9;
         }
 
         .hero-description {
-            margin-top: 35px;
-            color: #c3cee0;
-            font-size: 16px;
+            color: #687386;
+            margin-bottom: 30px;
         }
 
         .hero-button {
             display: inline-block;
-            margin-top: 35px;
-            padding: 12px 35px;
-            border: 1px solid #4da6ff;
-            color: #4da6ff;
-            text-decoration: none;
-            letter-spacing: 2px;
+            padding: 12px 30px;
+            background: #3979c9;
+            color: white;
+            border-radius: 4px;
             transition: 0.3s;
         }
 
         .hero-button:hover {
-            background-color: #4da6ff;
-            color: #080d18;
+            background: #285fa3;
+            transform: translateY(-3px);
         }
 
-        /* 各セクション共通の設定 */
+        /* =========================
+           共通セクション設定
+        ========================= */
         section {
-            padding: 85px 10%;
+            padding: 85px 0;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
+        .section-heading {
+            margin-bottom: 45px;
         }
 
-        .section-title h2 {
-            font-size: 30px;
-            letter-spacing: 3px;
-        }
-
-        .section-title p {
-            color: #4da6ff;
-            font-size: 12px;
-            letter-spacing: 4px;
-            margin-top: 5px;
-        }
-
-        /* プロフィールセクション */
-        .profile {
-            background-color: #0b1222;
-        }
-
-        .profile-content {
-            max-width: 850px;
-            margin: auto;
-            padding: 35px;
-            background-color: #111e33;
-            border: 1px solid #1d3557;
-            border-left: 4px solid #4da6ff;
-        }
-
-        /* 項目名と内容を2列のグリッドで配置 */
-        .profile-content p {
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            align-items: center;
-            column-gap: 10px;
-            margin-bottom: 15px;
-            color: #d1d9e8;
-        }
-
-        /* 項目名のデザイン */
-        .profile-content strong {
+        .section-heading .number {
             display: block;
-            width: auto;
-            color: #4da6ff;
+            color: #3979c9;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
         }
 
-        .profile-message {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #29415f;
-            color: #a9c8ee;
+        .section-heading h2 {
+            font-size: 2rem;
+            color: #252b36;
         }
 
-        /* 趣味セクション */
-        .hobbies {
-            background-color: #080d18;
+        .section-heading h2::after {
+            content: "";
+            display: block;
+            width: 45px;
+            height: 3px;
+            background: #3979c9;
+            margin-top: 12px;
         }
 
-        .hobby-container {
+        /* =========================
+           ABOUT：基本情報
+        ========================= */
+        .about {
+            background: #ffffff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-name {
+            padding: 40px 30px;
+            background: #edf4fc;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .about-name h3 {
+            font-size: 2.5rem;
+            color: #3979c9;
+            letter-spacing: 4px;
+        }
+
+        .about-name p {
+            color: #687386;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        .profile-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .profile-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 12px;
+        }
+
+        .profile-item .label {
+            width: 125px;
+            color: #3979c9;
+            font-size: 0.85rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .profile-item .value {
+            color: #343c49;
+        }
+
+        /* =========================
+           PERSONAL：キャッチコピー
+        ========================= */
+        .personal {
+            text-align: center;
+            background: #edf4fc;
+        }
+
+        .personal .section-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .personal .section-heading h2::after {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .catchphrase {
+            font-size: clamp(1.4rem, 4vw, 2.3rem);
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .catchphrase span {
+            color: #3979c9;
+        }
+
+        .personal-description {
+            color: #687386;
+        }
+
+        /* =========================
+           HOBBY：趣味・好きなこと
+        ========================= */
+        .hobby {
+            background: #ffffff;
+        }
+
+        .hobby-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            max-width: 950px;
-            margin: auto;
+            gap: 22px;
         }
 
         .hobby-card {
-            background: linear-gradient(145deg, #14243c, #0e1728);
-            border: 1px solid #1d3557;
-            padding: 35px 20px;
-            text-align: center;
+            min-height: 210px;
+            padding: 30px 25px;
+            background: #f7f9fc;
+            border: 1px solid #e5eaf1;
+            border-radius: 8px;
             transition: 0.3s;
         }
 
         .hobby-card:hover {
-            transform: translateY(-8px);
-            border-color: #4da6ff;
-            box-shadow: 0 8px 25px rgba(77, 166, 255, 0.12);
+            transform: translateY(-5px);
+            border-color: #3979c9;
+            box-shadow: 0 8px 20px rgba(57, 121, 201, 0.1);
         }
 
-        .hobby-icon {
-            font-size: 38px;
-            margin-bottom: 15px;
+        .hobby-number {
+            color: #3979c9;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            font-weight: bold;
         }
 
         .hobby-card h3 {
-            color: #4da6ff;
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin: 20px 0 10px;
         }
 
         .hobby-card p {
-            color: #b7c4d8;
-            font-size: 14px;
+            color: #687386;
+            font-size: 0.9rem;
         }
 
-        /* プログラミング経験セクション */
-        .skills {
-            background-color: #0b1222;
+        /* =========================
+           SKILL：プログラミング経験
+        ========================= */
+        .skill {
+            background: #edf4fc;
         }
 
-        .skill-container {
-            max-width: 750px;
-            margin: auto;
+        .skill-description {
+            color: #687386;
+            margin-bottom: 30px;
+        }
+
+        .skill-list {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
         }
 
-        .skill-item {
-            padding: 15px 35px;
-            min-width: 120px;
-            text-align: center;
-            background-color: #14243c;
-            border: 1px solid #31547d;
-            color: #70b8ff;
-            font-size: 18px;
+        .skill-tag {
+            padding: 12px 30px;
+            background: #ffffff;
+            border: 1px solid #d7e4f3;
+            border-radius: 5px;
+            color: #3979c9;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
 
-        .skill-item:hover {
-            background-color: #1c3c63;
-            border-color: #4da6ff;
+        .skill-tag:hover {
+            background: #3979c9;
+            color: #ffffff;
         }
 
+        /* =========================
+           LEARNING：学びたいこと
+        ========================= */
         .learning {
-            text-align: center;
-            margin-top: 50px;
-            color: #d1d9e8;
+            background: #ffffff;
         }
 
-        .learning h3 {
-            color: #4da6ff;
-            font-size: 20px;
+        .learning-box {
+            padding: 35px;
+            background: #edf4fc;
+            border-left: 4px solid #3979c9;
+            border-radius: 4px;
+        }
+
+        .learning-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            color: #3979c9;
+        }
+
+        .learning-box p {
+            color: #687386;
+        }
+
+        /* =========================
+           フッター
+        ========================= */
+        footer {
+            padding: 55px 0 25px;
+            text-align: center;
+            background: #252b36;
+            color: #ffffff;
+        }
+
+        .footer-message {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .footer-message span {
+            color: #75b5ff;
+        }
+
+        .footer-logo {
+            color: #75b5ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 4px;
             margin-bottom: 15px;
         }
 
-        /* 最後のメッセージセクション */
-        .message {
-            text-align: center;
-            background: linear-gradient(180deg, #0b1222, #101e35);
+        .copyright {
+            color: #aab3c1;
+            font-size: 0.75rem;
         }
 
-        .message h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
+        /* =========================
+           スマートフォン向け設定
+        ========================= */
+        @media screen and (max-width: 768px) {
 
-        .message p {
-            color: #b7c4d8;
-        }
-
-        .message .thanks {
-            color: #4da6ff;
-            font-size: 22px;
-            margin-top: 25px;
-            letter-spacing: 3px;
-        }
-
-        /* フッター */
-        footer {
-            text-align: center;
-            padding: 25px;
-            background-color: #060a12;
-            color: #687990;
-            font-size: 12px;
-            letter-spacing: 2px;
-            border-top: 1px solid #1d3557;
-        }
-
-        /* スマートフォン向けのレイアウト調整 */
-        @media screen and (max-width: 600px) {
-            header {
-                padding: 15px 5%;
+            /* ヘッダーを縦並びに変更 */
+            .header-inner {
                 flex-direction: column;
-                gap: 10px;
+                padding: 12px 0;
+                gap: 8px;
             }
 
             nav {
-                gap: 15px;
+                gap: 14px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
             nav a {
-                font-size: 12px;
+                font-size: 0.75rem;
             }
 
+            /* メインビジュアルの調整 */
             .hero {
-                min-height: 480px;
+                min-height: 450px;
             }
 
-            .hero h1 {
-                letter-spacing: 4px;
+            .hero-content {
+                padding: 70px 0;
             }
 
-            .hero h2 {
-                font-size: 16px;
-            }
-
+            /* セクションの余白を調整 */
             section {
-                padding: 65px 6%;
+                padding: 65px 0;
             }
 
-            .section-title h2 {
-                font-size: 25px;
-            }
-
-            .profile-content {
-                padding: 25px 20px;
-            }
-
-            /* スマートフォンでも項目名と内容の間隔を確保 */
-            .profile-content p {
-                grid-template-columns: 125px 1fr;
-                column-gap: 8px;
-                font-size: 14px;
-            }
-
-            .profile-content strong {
-                font-size: 13px;
-            }
-
-            .hobby-container {
+            /* プロフィールを縦並びに変更 */
+            .about-content {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 30px;
+            }
+
+            /* 趣味カードを1列に変更 */
+            .hobby-grid {
+                grid-template-columns: 1fr;
             }
 
             .hobby-card {
-                padding: 25px 15px;
+                min-height: 160px;
             }
 
-            .skill-item {
-                min-width: 105px;
-                padding: 12px 20px;
-                font-size: 16px;
+            .learning-box {
+                padding: 25px;
             }
         }
 
+        /* 小さなスマートフォン向けの調整 */
+        @media screen and (max-width: 400px) {
+            .profile-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 3px;
+            }
+
+            .skill-tag {
+                padding: 10px 22px;
+            }
+
+            .section-heading h2 {
+                font-size: 1.7rem;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- ヘッダー：サイトのロゴと各セクションへのリンク -->
+    <!-- ヘッダー：ロゴとページ内ナビゲーション -->
     <header>
-        <div class="logo">SONODA.</div>
+        <div class="container header-inner">
+            <a href="#" class="logo">SONODA.</a>
 
-        <nav>
-            <a href="#profile">PROFILE</a>
-            <a href="#hobbies">HOBBIES</a>
-            <a href="#skills">SKILLS</a>
-            <a href="#message">MESSAGE</a>
-        </nav>
+            <nav>
+                <a href="#about">ABOUT</a>
+                <a href="#personal">PERSONAL</a>
+                <a href="#hobby">HOBBY</a>
+                <a href="#skill">SKILL</a>
+                <a href="#learning">LEARNING</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- メインビジュアル：名前とキャッチコピー -->
     <main>
-        <div class="hero">
-            <p class="hero-subtitle">WELCOME TO MY PORTFOLIO</p>
 
-            <h1>SONODA</h1>
+        <!-- メインビジュアル：名前と自己紹介 -->
+        <section class="hero">
+            <div class="container hero-content">
+                <p class="hero-label">MY PORTFOLIO / 2026</p>
 
-            <h2>Information Engineering Student</h2>
+                <h1>
+                    HELLO,<br>
+                    I'M <span>SONODA.</span>
+                </h1>
 
-            <p class="hero-description">
-                1人でよくカラオケに行きます。
-            </p>
+                <p class="hero-description">
+                    INFORMATION ENGINEERING STUDENT<br>
+                    GAME / BOOK / MUSIC / PROGRAMMING
+                </p>
 
-            <a href="#profile" class="hero-button">EXPLORE MORE</a>
-        </div>
-
-        <!-- プロフィール：基本情報 -->
-        <section class="profile" id="profile">
-            <div class="section-title">
-                <h2>PROFILE</h2>
-                <p>ABOUT ME</p>
+                <a href="#about" class="hero-button">ABOUT ME ↓</a>
             </div>
+        </section>
 
-            <div class="profile-content">
-                <p><strong>NAME</strong><span>ソノダ</span></p>
-                <p><strong>GRADE</strong><span>3年</span></p>
-                <p><strong>FACULTY</strong><span>工学部</span></p>
-                <p><strong>DEPARTMENT</strong><span>情報工学科</span></p>
+        <!-- ABOUT：基本プロフィール -->
+        <section class="about" id="about">
+            <div class="container">
 
-                <div class="profile-message">
-                    情報工学を学びながら、プログラミングの知識や技術を身につけていきたいと思っています。
+                <div class="section-heading">
+                    <span class="number">01 / ABOUT ME</span>
+                    <h2>基本情報</h2>
+                </div>
+
+                <div class="about-content">
+
+                    <div class="about-name">
+                        <p>MY NAME IS</p>
+                        <h3>SONODA</h3>
+                        <p>INFORMATION ENGINEERING</p>
+                    </div>
+
+                    <div class="profile-list">
+
+                        <div class="profile-item">
+                            <span class="label">NAME</span>
+                            <span class="value">ソノダ</span>
+                        </div>
+
+                        <div class="profile-item">
+                            <span class="label">GRADE</span>
+                            <span class="value">大学3年</span>
+                        </div>
+
+                        <div class="profile-item">
+                            <span class="label">FACULTY</span>
+                            <span class="value">工学部</span>
+                        </div>
+
+                        <div class="profile-item">
+                            <span class="label">DEPARTMENT</span>
+                            <span class="value">情報工学科</span>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 趣味：好きなことを3つのカードで紹介 -->
-        <section class="hobbies" id="hobbies">
-            <div class="section-title">
-                <h2>HOBBIES</h2>
-                <p>MY FAVORITE THINGS</p>
+        <!-- PERSONAL：自分らしさを表すキャッチコピー -->
+        <section class="personal" id="personal">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="number">02 / PERSONAL</span>
+                    <h2>MY STYLE</h2>
+                </div>
+
+                <p class="catchphrase">
+                    1人でよく<span>カラオケ</span>に行きます。
+                </p>
+
+                <p class="personal-description">
+                    自分のペースで好きなことを楽しんでいます。
+                </p>
+
             </div>
+        </section>
 
-            <div class="hobby-container">
+        <!-- HOBBY：趣味・好きなこと -->
+        <section class="hobby" id="hobby">
+            <div class="container">
 
-                <div class="hobby-card">
-                    <div class="hobby-icon">🎮</div>
-                    <h3>GAME</h3>
-                    <p>ゲームを楽しむことが好きです。</p>
+                <div class="section-heading">
+                    <span class="number">03 / HOBBY</span>
+                    <h2>趣味・好きなこと</h2>
                 </div>
 
-                <div class="hobby-card">
-                    <div class="hobby-icon">📚</div>
-                    <h3>READING</h3>
-                    <p>読書が趣味です。</p>
+                <div class="hobby-grid">
+
+                    <div class="hobby-card">
+                        <span class="hobby-number">01 / GAME</span>
+                        <h3>ゲーム</h3>
+                        <p>ゲームをプレイすることが好きです。</p>
+                    </div>
+
+                    <div class="hobby-card">
+                        <span class="hobby-number">02 / BOOK</span>
+                        <h3>読書</h3>
+                        <p>本を読む時間が好きです。</p>
+                    </div>
+
+                    <div class="hobby-card">
+                        <span class="hobby-number">03 / MUSIC</span>
+                        <h3>歌うこと・ライブ</h3>
+                        <p>歌うことやライブを楽しんでいます。</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILL：経験のあるプログラミング言語 -->
+        <section class="skill" id="skill">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="number">04 / PROGRAMMING</span>
+                    <h2>プログラミング経験</h2>
                 </div>
 
-                <div class="hobby-card">
-                    <div class="hobby-icon">🎤</div>
-                    <h3>MUSIC</h3>
-                    <p>歌うことやライブが好きです。</p>
+                <p class="skill-description">
+                    これまでに触れたことのあるプログラミング言語です。
+                </p>
+
+                <div class="skill-list">
+                    <span class="skill-tag">JAVA</span>
+                    <span class="skill-tag">JAVASCRIPT</span>
+                    <span class="skill-tag">PYTHON</span>
+                    <span class="skill-tag">C</span>
                 </div>
 
             </div>
         </section>
 
-        <!-- プログラミング経験：使用経験のある言語 -->
-        <section class="skills" id="skills">
-            <div class="section-title">
-                <h2>PROGRAMMING</h2>
-                <p>MY EXPERIENCE</p>
+        <!-- LEARNING：授業で学びたいこと -->
+        <section class="learning" id="learning">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="number">05 / LEARNING</span>
+                    <h2>この授業で学びたいこと</h2>
+                </div>
+
+                <div class="learning-box">
+                    <h3>プログラミングの基礎</h3>
+                    <p>
+                        プログラミングの基礎をしっかりと学び、
+                        知識や技術を身につけていきたいと考えています。
+                    </p>
+                </div>
+
             </div>
-
-            <div class="skill-container">
-                <div class="skill-item">Java</div>
-                <div class="skill-item">JavaScript</div>
-                <div class="skill-item">Python</div>
-                <div class="skill-item">C</div>
-            </div>
-
-            <div class="learning">
-                <h3>WHAT I WANT TO LEARN</h3>
-                <p>この授業では、プログラミングの基礎を学びたいです。</p>
-            </div>
-        </section>
-
-        <!-- メッセージ：最後の挨拶 -->
-        <section class="message" id="message">
-            <h2>THANK YOU FOR VISITING</h2>
-
-            <p>
-                最後まで見ていただきありがとうございます。
-            </p>
-
-            <p class="thanks">
-                よろしくお願いします！
-            </p>
         </section>
 
     </main>
 
-    <!-- フッター：コピーライト -->
+    <!-- フッター：最後のメッセージ -->
     <footer>
-        © SONODA PORTFOLIO
+        <div class="container">
+
+            <p class="footer-message">
+                THANK YOU<span>!</span>
+            </p>
+
+            <p class="footer-logo">SONODA.</p>
+
+            <p class="copyright">
+                © 2026 SONODA PORTFOLIO
+            </p>
+
+        </div>
     </footer>
 
 </body>
